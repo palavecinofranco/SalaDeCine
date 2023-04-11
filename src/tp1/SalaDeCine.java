@@ -3,12 +3,12 @@ package tp1;
 public class SalaDeCine {
 	private Integer cantidadDeButacas;
 	private Integer filas;
-	private Boolean butacas[][];
+	private boolean butacas[][];
 	
 	public SalaDeCine(Integer cantidadDeButacas, Integer filas) {
 		this.cantidadDeButacas = cantidadDeButacas;
 		this.filas = filas;
-		this.butacas = new Boolean[filas][cantidadDeButacas];
+		this.butacas = new boolean[filas][cantidadDeButacas];
 	}
 	
 	public boolean estaVacia() {
@@ -23,13 +23,13 @@ public class SalaDeCine {
 	}
 	
 	public Boolean estaOcupada(Integer fila, Integer butaca) {
-		return butacas[fila][butaca];
+		return butacas[fila-1][butaca-1];
 
 	}
 	
 	public Boolean ocuparButaca(Integer fila, Integer butaca) {
-		if(!butacas[fila][butaca]) {
-			butacas[fila][butaca] = true;
+		if(!butacas[fila-1][butaca-1]) {
+			butacas[fila-1][butaca-1] = true;
 			return true;
 		} else {
 			return false;
@@ -39,7 +39,7 @@ public class SalaDeCine {
 	public Integer getCantidadDeButacasOcupadas() {
 		Integer contador = 0;
 		for(int i =0; i<this.butacas.length; i++) {
-			for(int j= 0; i<this.butacas.length; j++) {
+			for(int j= 0; j<this.butacas.length; j++) {
 				if(butacas[i][j]) {
 					contador++;
 				}
